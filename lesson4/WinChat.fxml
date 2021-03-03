@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" focusTraversable="true" prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ControlWinChat">
+   <children>
+      <MenuBar VBox.vgrow="ALWAYS">
+        <menus>
+          <Menu text="Соединение">
+            <items>
+               <MenuItem fx:id="mnBtnConnOpen" onAction="#doOpenConnection" text="Открыть" />
+               <MenuItem fx:id="mnBtnConnClose" onAction="#doCloseConnection" text="Закрыть" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+               <MenuItem fx:id="mnBtnSettings" text="Настроить" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+               <MenuItem onAction="#doExit" text="Выйти" />
+            </items>
+          </Menu>
+            <Menu fx:id="mnFormat" mnemonicParsing="false" onAction="#doChangeFormat" text="Формат">
+              <items>
+                  <RadioMenuItem mnemonicParsing="false" selected="true" text="общий">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grpFormat" />
+                     </toggleGroup></RadioMenuItem>
+                  <RadioMenuItem mnemonicParsing="false" text="группа" toggleGroup="$grpFormat" />
+                  <RadioMenuItem mnemonicParsing="false" text="приват" toggleGroup="$grpFormat" />
+              </items>
+            </Menu>
+            <Menu fx:id="mnStatus" mnemonicParsing="false" onAction="#doChangeStatus" text="Статус">
+              <items>
+                  <RadioMenuItem mnemonicParsing="false" selected="true" text="доступен">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="grpStatus" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem mnemonicParsing="false" text="только читаю" toggleGroup="$grpStatus" />
+                  <RadioMenuItem mnemonicParsing="false" text="не доступен" toggleGroup="$grpStatus" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <HBox minHeight="-Infinity" prefHeight="350.0" spacing="5.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Общение:" />
+                  <TextArea fx:id="txtAreaChat" editable="false" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" opacity="0.5" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0">
+               <children>
+                  <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" text="Участники:" />
+                  <ListView fx:id="lstMember" editable="false" focusTraversable="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox fx:id="boxSend" alignment="CENTER_RIGHT" disable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" spacing="5.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TextField fx:id="txtMessage" onKeyPressed="#doSendOnEnter" HBox.hgrow="ALWAYS" />
+            <Button alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#doSend" prefHeight="25.0" prefWidth="140.0" text="Отправить" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="соединение:" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblConnect" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label alignment="TOP_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="формат:" HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblFormat" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="статус:" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label fx:id="lblStatus" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>
